@@ -1,5 +1,6 @@
 package negocio.pelicula;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeliculaAdapter {
@@ -17,4 +18,14 @@ public class PeliculaAdapter {
     public boolean video;
     public float vote_average;
     public int vote_count;
+    private Pelicula pelicula = null;
+
+    public Pelicula getPelicula(){
+        if(pelicula == null) {
+            List<String> actores = new ArrayList<>();
+
+            pelicula = new Pelicula(title, "", actores, null);
+        }
+        return pelicula;
+    }
 }
