@@ -14,6 +14,15 @@ public class Entrada {
     private int precioFinal;
     private DateTimeException fechaLimite;
     private Pelicula pelicula;
+    public Entrada(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,Pelicula pelicula)
+    {
+        this.cliente = cliente;
+        this.numeroSala = numeroSala;
+        this.precioGeneral = precioGeneral;
+        this.promocion = promocion;
+       // this.fechaLimite = fechaLimite;
+        this.pelicula= pelicula;
+    }
     public void setPrecioFinal(int precio)
     {
         this.precioFinal = precio;
@@ -23,4 +32,8 @@ public class Entrada {
         return this.precioGeneral;
     }
     public void generarFactura(Facturacion facturador){};
+
+    public int getPrecioFinal() {
+        return precioFinal;
+    }
 }

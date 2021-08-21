@@ -13,7 +13,7 @@ public class Cliente {
     private List<Entrada> reservas;
     private List<Producto> combos;
 
-    public void reservarEntrada(Funcion funcion,String filaColumna)
+    /*public void reservarEntrada(Funcion funcion,String filaColumna)
     {
         this.reservas.add(funcion.reservarEntrada(funcion,filaColumna));
     }
@@ -22,6 +22,6 @@ public class Cliente {
     }
     public void comprar_combo(Producto producto){
         this.combos.add(producto);
-    }
+    }*/
 
 }
