@@ -5,16 +5,16 @@ import negocio.Facturacion.Facturacion;
 public abstract class Producto {
     private String  nombre;
     private String codigo;
-    private double precio;
+    private int precio;
 
-    abstract public double calcularPrecio ();
+    abstract public int calcularPrecio ();
     abstract public void generarFactura(Facturacion facturaVisitor);
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 }
