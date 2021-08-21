@@ -1,17 +1,38 @@
 package negocio.main;
 
 import negocio.pelicula.ListadoDePeliculas;
+import negocio.pelicula.Pelicula;
 import negocio.pelicula.ServicioPeliculas;
+import persistencia.Persona;
+import persistencia.PersonasDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
+
+    private static List<Persona> personas;
+
     public static void main(String[] args) throws IOException {
-        System.out.println("esto es una prueba");
+        // Altas
+        Persona pers1 = new Persona("Juan", "Lopez", 33);
+        System.out.println("Nueva persona cargada con ID " + pers1.getId());
+        Persona pers2 = new Persona("Maria", "Dolte", 12);
+        System.out.println("Nueva persona cargada con ID " + pers2.getId());
+        Persona pers3 = new Persona("Antoine", "Derrida", 57);
+        System.out.println("Nueva persona cargada con ID " + pers3.getId());
 
-        ListadoDePeliculas listadoDePeliculas = ServicioPeliculas.getInstancia().getPeliculasEnCartelera(1);
+        // Inactivar a Mar�a Dolte
+        if (pers2.baja())
+            System.out.println("Baja realizada de ID " + pers2.getId());
 
+        // Dar de baja a Antoine
+        if (pers3.bajaTotal())
+            System.out.println("Baja realizada de ID " + pers3.getId());
 
-        System.out.println("esto es una prueba");
+        // Recorrer todas las personas
+        PersonasDAO oPersonaDAO = new PersonasDAO();
+        personas = oPersonaDAO.selectActivas();
+        System.out.println("Actualmente hay " + personas.size() + " personas activas");
     }
 }
