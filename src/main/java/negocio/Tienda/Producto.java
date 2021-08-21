@@ -7,10 +7,14 @@ public abstract class Producto {
     private String codigo;
     private double precio;
 
-    abstract public void calcularPrecio ();
+    abstract public double calcularPrecio ();
     abstract public void generarFactura(Facturacion facturaVisitor);
 
     public double getPrecio() {
         return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }

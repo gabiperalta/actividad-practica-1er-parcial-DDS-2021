@@ -4,8 +4,8 @@ import negocio.Facturacion.Facturacion;
 
 public class ProductoSimple extends Producto {
     @Override
-    public void calcularPrecio() {
-        this.getPrecio();
+    public double calcularPrecio() {
+        return this.getPrecio();
     }
 
     @Override
