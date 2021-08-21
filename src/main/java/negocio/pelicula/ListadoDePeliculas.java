@@ -3,7 +3,6 @@ package negocio.pelicula;
 import java.util.List;
 
 public class ListadoDePeliculas {
-    //public List<DateAPI> dates;
     public DateAPI dates;
     public int page;
     public List<PeliculaAdapter> results;
