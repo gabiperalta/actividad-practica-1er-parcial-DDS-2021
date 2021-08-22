@@ -1,4 +1,4 @@
-package persistencia;
+package persistencia.ejemplo;
 
 public class Persona {
 

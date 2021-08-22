@@ -1,4 +1,4 @@
-package persistencia;
+package persistencia.ejemplo;
 
 import java.sql.*;
 import java.util.ArrayList;

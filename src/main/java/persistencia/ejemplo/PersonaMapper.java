@@ -1,8 +1,4 @@
-package persistencia;
-import persistencia.PersonaDAO;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package persistencia.ejemplo;
 
 public class PersonaMapper {
 

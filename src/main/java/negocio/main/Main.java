@@ -1,10 +1,7 @@
 package negocio.main;
 
-import negocio.pelicula.ListadoDePeliculas;
-import negocio.pelicula.Pelicula;
-import negocio.pelicula.ServicioPeliculas;
-import persistencia.Persona;
-import persistencia.PersonasDAO;
+import persistencia.ejemplo.Persona;
+import persistencia.ejemplo.PersonasDAO;
 
 import java.io.IOException;
 import java.util.List;
