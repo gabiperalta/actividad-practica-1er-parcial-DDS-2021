@@ -1,8 +1,7 @@
 package negocio.Boleto;
 
-import negocio.Boleto.Boleto;
 import negocio.Cine.Funcion;
-import negocio.Cineasta.Cliente;
+import negocio.Cliente.Cliente;
 import negocio.Facturacion.Facturacion;
 import negocio.Promocion.Promocion;
 

@@ -2,11 +2,12 @@ package negocio.Cine;
 
 import negocio.Boleto.Entrada;
 import negocio.Boleto.Reserva;
-import negocio.Cineasta.Cliente;
+import negocio.Cliente.Cliente;
 import negocio.Promocion.FinDeSemana;
 import negocio.Promocion.Miercoles;
 import negocio.Promocion.Promocion;
 import negocio.Promocion.SinPromocion;
+import negocio.pelicula.Pelicula;
 
 import java.util.Date;
 import java.util.HashMap;

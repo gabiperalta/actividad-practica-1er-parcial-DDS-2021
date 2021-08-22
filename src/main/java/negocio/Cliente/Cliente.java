@@ -1,4 +1,4 @@
-package negocio.Cineasta;
+package negocio.Cliente;
 
 import negocio.Boleto.Entrada;
 import negocio.Cine.Funcion;

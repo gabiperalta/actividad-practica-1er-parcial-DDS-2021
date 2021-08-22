@@ -1,6 +1,6 @@
 package negocio.Cine;
 
-import negocio.Cineasta.Cliente;
+import negocio.Cliente.Cliente;
 import negocio.Tienda.Tienda;
 
 
