@@ -1,5 +1,7 @@
 package persistencia.ejemplo;
 
+import persistencia.Conexion;
+
 public class Persona {
 
     private int id;
@@ -20,12 +22,12 @@ public class Persona {
     }
 
     public boolean baja() {
-        PersonaDAO oPersonaDAO = new PersonaDAO();
+        PersonaDAO oPersonaDAO = new PersonaDAO(Conexion.getInstance().getConnection());
         return oPersonaDAO.updateActivo(this.id);
     }
 
     public boolean bajaTotal() {
-        PersonaDAO oPersonaDAO = new PersonaDAO();
+        PersonaDAO oPersonaDAO = new PersonaDAO(Conexion.getInstance().getConnection());
         return oPersonaDAO.delete(this.id);
     }
 

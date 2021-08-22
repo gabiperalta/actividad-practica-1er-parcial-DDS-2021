@@ -6,37 +6,16 @@ import java.util.List;
 
 public class PersonaDAO {
 
-    private Connection conn;
+    private final Connection conn;
 
-    public Connection newConnection() {
-        Connection conn = null;
-        try {
-            String connectionUrl = "jdbc:mysql://localhost:3306/dds";
-            //connectionUrl =  "jdbc:mysql://localhost:3306/dds3?serverTimezone=UTC";
-            conn = DriverManager.getConnection(connectionUrl, "root", "1234");
-
-            // Do something with the Connection
-            //System.out.println("Conexi�n realizada");
-
-            return conn;
-
-        } catch (SQLException ex) {
-
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-            return null;
-        }
+    public PersonaDAO(Connection connection){
+        this.conn = connection;
     }
 
     public int insert(String nombre, int edad) {
         String consulta = "INSERT INTO persona (nombre, edad) VALUES ('" + nombre + "'," + edad + ");";
 
         try {
-
-            this.conn = newConnection();
-
             // Ejecuci�n
             PreparedStatement stmt = this.conn.prepareStatement(consulta, Statement.RETURN_GENERATED_KEYS);
 
@@ -65,8 +44,6 @@ public class PersonaDAO {
 
         try {
 
-            this.conn = newConnection();
-
             // Ejecuci�n
             PreparedStatement stmt = this.conn.prepareStatement(consulta);
 
@@ -88,8 +65,6 @@ public class PersonaDAO {
         String consulta = "DELETE FROM persona WHERE id = " + idPersona + ";";
 
         try {
-
-            this.conn = newConnection();
 
             // Ejecuci�n
             PreparedStatement stmt = this.conn.prepareStatement(consulta);

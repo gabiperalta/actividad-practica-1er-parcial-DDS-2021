@@ -1,5 +1,6 @@
 package negocio.main;
 
+import persistencia.Conexion;
 import persistencia.ejemplo.Persona;
 import persistencia.ejemplo.PersonasDAO;
 
@@ -28,7 +29,7 @@ public class Main {
             System.out.println("Baja realizada de ID " + pers3.getId());
 
         // Recorrer todas las personas
-        PersonasDAO oPersonaDAO = new PersonasDAO();
+        PersonasDAO oPersonaDAO = new PersonasDAO(Conexion.getInstance().getConnection());
         personas = oPersonaDAO.selectActivas();
         System.out.println("Actualmente hay " + personas.size() + " personas activas");
     }

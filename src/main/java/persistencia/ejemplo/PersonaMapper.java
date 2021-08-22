@@ -1,5 +1,7 @@
 package persistencia.ejemplo;
 
+import persistencia.Conexion;
+
 public class PersonaMapper {
 
     private String nombre;
@@ -13,7 +15,7 @@ public class PersonaMapper {
     }
 
     public int insert() {
-        PersonaDAO personaDAO = new PersonaDAO();
+        PersonaDAO personaDAO = new PersonaDAO(Conexion.getInstance().getConnection());
         return personaDAO.insert(this.nombre + ' ' + this.apellido, this.edad);
     }
 }
