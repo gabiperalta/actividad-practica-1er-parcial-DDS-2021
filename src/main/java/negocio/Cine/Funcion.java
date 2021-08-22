@@ -5,10 +5,7 @@ import negocio.Promocion.FinDeSemana;
 import negocio.Promocion.Miercoles;
 import negocio.Promocion.Promocion;
 import negocio.Promocion.SinPromocion;
-import sun.util.calendar.LocalGregorianCalendar;
 
-import java.sql.Time;
-import java.time.DateTimeException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -33,9 +30,12 @@ public class Funcion {
         this.pelicula= pelicula;
     }
 
+    public int getAsientosLibres(){return this.asientosLibres;}
     public int getNumeroSala() {
         return numeroSala;
     }
+
+    public void setUbicaciones(HashMap<String,Boolean> ubicaciones){this.ubicaciones = ubicaciones;}
 
     public void setNumeroSala(int numeroSala) {
         this.numeroSala = numeroSala;
@@ -67,18 +67,25 @@ public class Funcion {
         {
             if(key.equals(ubicacionEsperada))
             {
-                Boolean ocupacion = ubicaciones.get(key);
-                if(ocupacion)
-                {
-                    return  false;
-                }
-                else
-                {
-                    return true;
-                }
+                return  ubicaciones.get(key);
             }
         }
         return false;
+    }
+    public HashMap<String,Boolean> test(String ubicacionEsperada)
+    {
+        for (String key : ubicaciones.keySet())
+        {
+            if(key.equals(ubicacionEsperada))
+            {
+                Boolean ocupacion = ubicaciones.get(key);
+                if(ocupacion)
+                {
+
+                }
+            }
+        }
+        return ubicaciones;
     }
     public Promocion obtenerPromocion()
     {
@@ -107,23 +114,42 @@ public class Funcion {
             {
                 ubicaciones.replace(filaColumna,disponibilidad);
             }
+            if(disponibilidad)
+            {
+                this.asientosLibres += 1;
+            }
+            if(!disponibilidad)
+            {
+                this.asientosLibres -= 1;
+            }
         }
     }
    public Entrada solicitarEntrada(String filaColumna, Cliente cliente) {
            Promocion promo = this.obtenerPromocion();
-           Entrada entradaNueva = new Entrada(cliente,this.numeroSala,this.precioGeneral,promo,this);
+           Entrada entradaNueva = new Entrada(cliente,this.numeroSala,this.precioGeneral,promo,this,filaColumna);
            this.disponibilidadBoleto(filaColumna,false);
            return entradaNueva;
     }
-   /* public Entrada entradaAleatoria(Cliente cliente)
+    public Reserva solicitarReserva(String filaColumna, Cliente cliente) {
+        Promocion promo = this.obtenerPromocion();
+        Reserva reservaNueva = new Reserva(cliente,this.numeroSala,this.precioGeneral,promo,this,filaColumna);
+        this.disponibilidadBoleto(filaColumna,false);
+        return reservaNueva;
+    }
+    public Entrada entradaAleatoria(Cliente cliente)
     {
-        for (Boolean value : ubicaciones.values())
+        Promocion promo = this.obtenerPromocion();
+        Entrada entrada = new Entrada(cliente,this.numeroSala,this.precioGeneral,promo,this,"vacio");
+
+        for (String key : ubicaciones.keySet())
         {
-            if(key.equals(ubicacionEsperada))
+            if(ubicaciones.get(key))
             {
-                return false;
+                entrada.setFilaColumna(key);
+                this.disponibilidadBoleto(key,false);
             }
         }
-        return true;
-    }*/
+
+        return entrada;
+    }
 }

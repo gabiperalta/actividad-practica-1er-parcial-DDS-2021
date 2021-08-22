@@ -13,14 +13,17 @@ public class Entrada extends Boleto {
     private int precioFinal;
     private Funcion funcion;
     private Promocion promocion;
-    public Entrada(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,Funcion funcion)
+    private String filaColumna;
+    public Entrada(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,Funcion funcion,String filaColumna)
     {
         this.cliente = cliente;
         this.numeroSala = numeroSala;
         this.precioGeneral = precioGeneral;
         this.promocion = promocion;
         this.funcion = funcion;
+        this.filaColumna = filaColumna;
     }
+    public void setFilaColumna(String filaColumna){this.filaColumna = filaColumna;}
     public void setPrecioFinal(int precio)
     {
         this.precioFinal = precio;

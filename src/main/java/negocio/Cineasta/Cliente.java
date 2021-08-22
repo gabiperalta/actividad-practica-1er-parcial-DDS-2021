@@ -33,27 +33,35 @@ public class Cliente {
     public void removeEntrada(Entrada entrada){this.entradas.remove(entrada);};
     public void addEntrada(Entrada entrada){this.entradas.add(entrada);};
 
-    /*public void reservarEntrada(Funcion funcion,String filaColumna)
+    public void pedirEntradaporfila(Funcion funcion,String filaColumna)
     {
-        this.reservas.add(funcion.reservarEntrada(funcion,filaColumna));
-    }
-    public void comprar_entrada(Funcion funcion,String filaColumna){
-        this.entradas.add(funcion.reservarEntrada(funcion,filaColumna));
-    }
-    public void comprar_combo(Producto producto){
-        this.combos.add(producto);
-    }*/
-    public void validarEntrada(Funcion funcion,String filaColumna)
-    {
+        Entrada nuevaEntrada;
         if(funcion.validarUbicacion(filaColumna))
         {
-           Entrada nuevaEntrada =  funcion.solicitarEntrada(filaColumna,this);
+            nuevaEntrada =  funcion.solicitarEntrada(filaColumna,this);
            this.addEntrada(nuevaEntrada);
         }
-        else
-        {
-
+    }
+    public void pedirEntradaaleatoria(Funcion funcion)
+    {
+            if(funcion.getAsientosLibres() >0)
+            {
+                Entrada nuevaEntrada = funcion.entradaAleatoria(this);
+                this.addEntrada(nuevaEntrada);
+            }
+            else
+            {
+                //No hay mas entradas para la funcion solicitada
+            }
+    }
+    public void pedirReserva(Funcion funcion,String filaColumna)
+    {
+        Reserva nuevaReserva;
+        if(funcion.validarUbicacion(filaColumna))
+        { nuevaReserva =  funcion.solicitarReserva(filaColumna,this);
+            this.addReserva(nuevaReserva);
         }
+        //Si no hay ubicacion para esa columna fila debe seleccionar otra el sistema no le dara opciones
     }
 
 }
