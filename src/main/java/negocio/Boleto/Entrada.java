@@ -1,10 +1,10 @@
-package negocio.Cine;
+package negocio.Boleto;
 
+import negocio.Boleto.Boleto;
+import negocio.Cine.Funcion;
 import negocio.Cineasta.Cliente;
 import negocio.Facturacion.Facturacion;
 import negocio.Promocion.Promocion;
-
-import java.time.DateTimeException;
 
 public class Entrada extends Boleto {
     private Cliente cliente;

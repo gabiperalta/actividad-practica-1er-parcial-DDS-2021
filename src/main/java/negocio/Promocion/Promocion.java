@@ -1,6 +1,6 @@
 package negocio.Promocion;
 
-import negocio.Cine.Entrada;
+import negocio.Boleto.Entrada;
 
 public abstract class Promocion {
 

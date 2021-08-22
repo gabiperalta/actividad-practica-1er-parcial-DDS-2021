@@ -1,4 +1,4 @@
-package negocio.Cine;
+package negocio.Boleto;
 
 public enum Estado {
     Cancelado,

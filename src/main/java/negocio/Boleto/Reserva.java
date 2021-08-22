@@ -1,9 +1,8 @@
-package negocio.Cine;
+package negocio.Boleto;
 
+import negocio.Cine.Funcion;
 import negocio.Cineasta.Cliente;
 import negocio.Promocion.Promocion;
-
-import java.util.Date;
 
 public class Reserva {
     private String codigoReserva;

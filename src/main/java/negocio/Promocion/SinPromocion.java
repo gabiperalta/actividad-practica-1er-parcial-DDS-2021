@@ -1,6 +1,6 @@
 package negocio.Promocion;
 
-import negocio.Cine.Entrada;
+import negocio.Boleto.Entrada;
 
 public class SinPromocion extends Promocion {
     private static int porcentajedescuento = 0;

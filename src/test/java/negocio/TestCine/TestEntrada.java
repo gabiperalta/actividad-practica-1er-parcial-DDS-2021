@@ -1,6 +1,5 @@
 package negocio.TestCine;
-import com.sun.org.apache.xpath.internal.operations.Equals;
-import negocio.Cine.Entrada;
+import negocio.Boleto.Entrada;
 import negocio.Cine.Funcion;
 import negocio.Cine.Pelicula;
 import negocio.Cineasta.Cliente;
@@ -9,10 +8,8 @@ import negocio.Promocion.Promocion;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import sun.awt.windows.WPrinterJob;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import static negocio.Cine.Dia.Martes;
 

@@ -1,8 +1,8 @@
 package negocio.Cineasta;
 
-import negocio.Cine.Entrada;
+import negocio.Boleto.Entrada;
 import negocio.Cine.Funcion;
-import negocio.Cine.Reserva;
+import negocio.Boleto.Reserva;
 import negocio.Tienda.Producto;
 
 import java.util.ArrayList;
