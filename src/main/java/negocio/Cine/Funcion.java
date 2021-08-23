@@ -17,6 +17,10 @@ public class Funcion {
     private Pelicula pelicula;
     private HashMap<Boolean,Entrada> Entradas;
 
+    public Funcion(){
+
+    }
+
     public Funcion(int numeroSala,int asientosTotales,int asientosLibres,String ubicacionAsiento,int precioGeneral,String dia,DateTimeException horarioInicio,DateTimeException horarioFin, Pelicula pelicula)
     {
         this.numeroSala = numeroSala;
@@ -62,7 +66,23 @@ public class Funcion {
         this.horarioFin = horarioFin;
     }
 
-   /* public Entrada reservarEntrada(Funcion funcion, String filaColumna, Cliente cliente) {
+    public void setAsientosLibres(int asientosLibres) {
+        this.asientosLibres = asientosLibres;
+    }
+
+    public void setAsientosTotales(int asientosTotales) {
+        this.asientosTotales = asientosTotales;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public void setHorarioInicio(DateTimeException horarioInicio) {
+        this.horarioInicio = horarioInicio;
+    }
+
+    /* public Entrada reservarEntrada(Funcion funcion, String filaColumna, Cliente cliente) {
         //buscar entrada
         //(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,DateTimeException fechaLimite,Pelicula pelicula)
         //calcular Promocion en base al dia d ela funcion
