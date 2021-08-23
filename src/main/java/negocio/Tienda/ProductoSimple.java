@@ -12,6 +12,9 @@ public class ProductoSimple extends Producto {
     public void generarFactura(Facturacion facturaVisitor) {
 
     }
+
+    public ProductoSimple(){}
+
     public ProductoSimple(int precio) {
         this.setPrecio(precio);
     };

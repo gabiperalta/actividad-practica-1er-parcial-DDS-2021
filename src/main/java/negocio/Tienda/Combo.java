@@ -35,7 +35,7 @@ public class Combo extends Producto {
     {
         return  precioCombo - ((precioCombo * Porcentajedescuento)/100);
     }
-    public void Porcentajedescuento(int porcentajedescuento)
+    public void setPorcentajedescuento(int porcentajedescuento)
     {
         this.Porcentajedescuento = porcentajedescuento;
     }
