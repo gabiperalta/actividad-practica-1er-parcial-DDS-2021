@@ -15,6 +15,8 @@ public class Cliente {
     private List<Reserva> reservas;
     private List<Producto> combos;
 
+    //test
+
     public Cliente(String nombre,String apellido)
     {
         this.nombre = nombre;
