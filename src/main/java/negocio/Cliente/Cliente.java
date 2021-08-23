@@ -13,6 +13,10 @@ public class Cliente {
     private List<Entrada> reservas;
     private List<Producto> combos;
 
+    public Cliente(){
+
+    }
+
     /*public void reservarEntrada(Funcion funcion,String filaColumna)
     {
         this.reservas.add(funcion.reservarEntrada(funcion,filaColumna));
@@ -24,4 +28,11 @@ public class Cliente {
         this.combos.add(producto);
     }*/
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 }
