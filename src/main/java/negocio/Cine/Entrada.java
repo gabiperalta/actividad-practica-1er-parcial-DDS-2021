@@ -13,15 +13,15 @@ public class Entrada {
     private Promocion promocion;
     private int precioFinal;
     private DateTimeException fechaLimite;
-    private Pelicula pelicula;
-    public Entrada(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,Pelicula pelicula)
+    private PeliculaOld peliculaOld;
+    public Entrada(Cliente cliente, int numeroSala, int precioGeneral, Promocion promocion, PeliculaOld peliculaOld)
     {
         this.cliente = cliente;
         this.numeroSala = numeroSala;
         this.precioGeneral = precioGeneral;
         this.promocion = promocion;
        // this.fechaLimite = fechaLimite;
-        this.pelicula= pelicula;
+        this.peliculaOld = peliculaOld;
     }
     public void setPrecioFinal(int precio)
     {

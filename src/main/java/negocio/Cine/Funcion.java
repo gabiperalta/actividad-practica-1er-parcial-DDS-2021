@@ -1,6 +1,6 @@
 package negocio.Cine;
 
-import negocio.Cliente.Cliente;
+import negocio.pelicula.Pelicula;
 
 import java.time.DateTimeException;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class Funcion {
         this.dia = dia;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
-        this.pelicula= pelicula;
+        this.pelicula = pelicula;
     }
 
     public int getNumeroSala() {

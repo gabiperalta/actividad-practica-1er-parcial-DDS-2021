@@ -1,6 +1,7 @@
 package persistencia.funcion;
 
 import negocio.Cine.Funcion;
+import persistencia.pelicula.PeliculasDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,11 +20,13 @@ public class FuncionesDAO {
     public List<Funcion> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM funcion";
+            String consulta = "SELECT * FROM funcion f inner join pelicula p on f.id_pelicula = p.id";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
             ResultSet rs = stmt.executeQuery(consulta);
+
+            PeliculasDAO peliculasDAO = new PeliculasDAO(conn);
 
             // Recorrer y usar cada linea retornada
             List<Funcion> funciones = new ArrayList<>();
@@ -38,9 +41,7 @@ public class FuncionesDAO {
                 obj.setHorarioInicio(null); // TODO revisar como guardamos las fechas en java
                 obj.setHorarioFin(null); // TODO revisar como guardamos las fechas en java
                 obj.setPrecioGeneral(rs.getInt("precio_general")); // TODO revisar si guardamos el precio como int o como decimal
-
-                // TODO falta obtener la pelicula
-
+                obj.setPelicula(peliculasDAO.select(rs.getInt("id_pelicula")));
                 funciones.add(obj);
             }
             return funciones;

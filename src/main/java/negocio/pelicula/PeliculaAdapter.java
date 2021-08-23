@@ -18,7 +18,7 @@ public class PeliculaAdapter {
 
     public Pelicula getPelicula(){
         if(pelicula == null)
-            pelicula = new Pelicula(title, generos, actores, this.getEstrenoAsLocalDate());
+            pelicula = new Pelicula(title, "Comedia", "juan perez", this.getEstrenoAsLocalDate());
         return pelicula;
     }
 
