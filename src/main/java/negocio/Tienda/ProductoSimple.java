@@ -1,6 +1,8 @@
 package negocio.Tienda;
 
 import negocio.Facturacion.Facturacion;
+import persistencia.Conexion;
+import persistencia.producto.ProductoSimpleDAO;
 
 public class ProductoSimple extends Producto {
     @Override
@@ -15,7 +17,12 @@ public class ProductoSimple extends Producto {
 
     public ProductoSimple(){}
 
-    public ProductoSimple(int precio) {
+    public ProductoSimple(String nombre, String codigo, int precio) {
+        this.setNombre(nombre);
+        this.setCodigo(codigo);
         this.setPrecio(precio);
-    };
+
+        ProductoSimpleDAO productoSimpleDAO = new ProductoSimpleDAO(Conexion.getInstance().getConnection());
+        this.setId(productoSimpleDAO.insert(nombre,codigo,precio));
+    }
 }

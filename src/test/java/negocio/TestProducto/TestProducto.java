@@ -17,9 +17,9 @@ public class TestProducto {
     @Test
     //Calcular precio combo pochoclero con 5% de descuento
     public void TestCombo(){
-        Combo combo = new Combo();
-        ProductoSimple gaseosa = new ProductoSimple(50);
-        ProductoSimple pochoclos = new ProductoSimple(100);
+        Combo combo = new Combo("Combo cine", "COMBO55");
+        ProductoSimple gaseosa = new ProductoSimple("Coca Cola 500 ml","CC500",50);
+        ProductoSimple pochoclos = new ProductoSimple("Pororo","P100",100);
         List<Producto> productos = new ArrayList<>();
         productos.add(gaseosa);
         productos.add(pochoclos);

@@ -35,12 +35,12 @@ public class Cliente {
 
     public List<Boleto> getEntradas(){return this.entradas;};
     public List<Boleto> getReservas(){return this.reservas;};
-    public void setEntradas(List<Boleto> entradas){this.entradas = entradas;};
-    public void setReservas(List<Boleto> reservas){this.reservas = reservas;};
-    public void removeReserva(Boleto reserva){this.reservas.remove(reserva);};
-    public void addReserva(Boleto reserva){this.reservas.add(reserva);};
-    public void removeEntrada(Boleto entrada){this.entradas.remove(entrada);};
-    public void addEntrada(Boleto entrada){this.entradas.add(entrada);};
+    public void setEntradas(List<Boleto> entradas){this.entradas = entradas;}
+    public void setReservas(List<Boleto> reservas){this.reservas = reservas;}
+    public void removeReserva(Boleto reserva){this.reservas.remove(reserva);}
+    public void addReserva(Boleto reserva){this.reservas.add(reserva);}
+    public void removeEntrada(Boleto entrada){this.entradas.remove(entrada);}
+    public void addEntrada(Boleto entrada){this.entradas.add(entrada);}
 
     public void pedirEntradaporfila(Funcion funcion,String filaColumna)
     {
