@@ -2,6 +2,36 @@ CREATE DATABASE `dds` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_090
 
 use dds;
 
+CREATE TABLE `cliente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  `apellido` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `pelicula` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `generos` varchar(500) DEFAULT NULL,
+  `actores` varchar(500) DEFAULT NULL,
+  `estreno` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `funcion` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `numero_sala` int DEFAULT NULL,
+  `asientos_libres` int DEFAULT NULL,
+  `asientos_totales` int DEFAULT NULL,
+  `dia` int DEFAULT NULL,
+  `fecha_funcion` datetime DEFAULT NULL,
+  `precio_general` int DEFAULT NULL,
+  `id_pelicula` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_pelicula_idx` (`id_pelicula`),
+  CONSTRAINT `id` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `boleto` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_cliente` int DEFAULT NULL,
@@ -13,13 +43,6 @@ CREATE TABLE `boleto` (
   CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
   CONSTRAINT `id_funcion` FOREIGN KEY (`id_funcion`) REFERENCES `funcion` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `cliente` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `combo` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -41,29 +64,6 @@ CREATE TABLE `comboxcliente` (
   CONSTRAINT `cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
   CONSTRAINT `combo` FOREIGN KEY (`id_combo`) REFERENCES `combo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `funcion` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `numero_sala` int DEFAULT NULL,
-  `asientos_libres` int DEFAULT NULL,
-  `asientos_totales` int DEFAULT NULL,
-  `dia` int DEFAULT NULL,
-  `fecha_funcion` datetime DEFAULT NULL,
-  `precio_general` int DEFAULT NULL,
-  `id_pelicula` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_pelicula_idx` (`id_pelicula`),
-  CONSTRAINT `id` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `pelicula` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
-  `generos` varchar(500) DEFAULT NULL,
-  `actores` varchar(500) DEFAULT NULL,
-  `estreno` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `productoSimple` (
   `id` int NOT NULL AUTO_INCREMENT,
