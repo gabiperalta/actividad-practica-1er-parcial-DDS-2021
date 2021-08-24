@@ -8,10 +8,6 @@ public class ProductoSimple extends Producto {
         return this.getPrecio();
     }
 
-    @Override
-    public void generarFactura(Facturacion facturaVisitor) {
-
-    }
     public ProductoSimple(int precio) {
         this.setPrecio(precio);
     };

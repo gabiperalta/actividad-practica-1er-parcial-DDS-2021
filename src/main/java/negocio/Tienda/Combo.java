@@ -24,10 +24,7 @@ public class Combo extends Producto {
         return precioCombo;
     }
 
-    @Override
-    public void generarFactura(Facturacion facturaVisitor) {
 
-    }
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
