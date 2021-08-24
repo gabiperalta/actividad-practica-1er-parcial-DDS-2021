@@ -1,13 +1,17 @@
 requerimientos funcionales:
 - se desea realizar un sistema que permita la compra/reserva de entradas de un cine
-- los clientes, a la hora de comprar/reservar un boleto, deberan indicar la funcion a la que se quiere asistir y tambien una ubicacion de preferecia (siempre y cuando esta see encuentre libre)
+- los clientes, a la hora de reservar un boleto, deberan indicar la funcion a la que se quiere asistir y tambien una ubicacion de preferecia (siempre y cuando esta see encuentre libre)
 - se aplicara un descuento al precio de cada boleto dependiendo del dia en el que comience la funcion
-- los clientes pueden reservar un boleto y luego volver a reservar otros o directamente comprarlos
+- los clientes pueden reservar un boleto y luego del abono del mismo, este pasara a estado pagado aplicando un descuento para la compra de productos.
 - la informacion de las peliculas correspondientes a cada funcion se obtiene a traves de la API provista por TheMovieDB (https://developers.themoviedb.org/3/getting-started/introduction)
-- ademas de la venta/reserva de entradas, el cine tambien contara con una tienda para poder comprar comidas y bebidas y consumirlas durante una funcion.
+- ademas de la venta/reserva de boletos, el cine tambien contara con una tienda para poder comprar comidas y bebidas y consumirlas durante una funcion.
 - la tienda ofrece productos individuales (bebida gaseosa, pochoclos, etc) y tambien combos que contengan mas productos (combo familia: 2 bebidas y pochoclo grande).
+-se debe permitir que los encargados creen nuevas funciones.
+-se debe dar la posibilidad a los clientes de hacer reclamos.
 - toda la informacion sobre los clientes, las funciones, boletos, peliculas y productos de la tienda, deberan almacenarse en una base de datos relacional.
 - se debera guardar informacion de las boletos vendidos en un log que se almacenara en una base de datos MongoDB
 
 requerimientos no funcionales:
 - ademas de generar un log sobre cada boleto vendido, tambien se generara un log cada noche con un resumen sobre las funciones que ocurrieron en el dia, ejemplo: {nombreFuncion, asientosVendidos, pelicula, etc...}.
+-La pagina web del cine debe poder funcionar desde cualquier dispositivo.
+-Debe soportar un gran número de clientes conectados al mismo tiempo.
