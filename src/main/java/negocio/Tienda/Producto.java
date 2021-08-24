@@ -9,7 +9,10 @@ public abstract class Producto {
     private int precio;
 
     abstract public int calcularPrecio ();
-    abstract public void generarFactura(Facturacion facturaVisitor);
+    public void generarFactura(Facturacion faturador)
+    {
+        faturador.generarFacturaProducto(this);
+    }
 
     public int getPrecio() {
         return precio;

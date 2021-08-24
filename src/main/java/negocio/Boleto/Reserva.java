@@ -13,6 +13,11 @@ public class Reserva extends EstadoBoleto{
     private Funcion funcion;
     private Promocion promocion;
     private String filaColumna;
+    private int descuentProductos;
+    public void setDescuentProductos()
+    {
+        this.descuentProductos = 0;
+    }
     public void cancelarReserva(Cliente cliente)
     {
         this.funcion.disponibilidadBoleto(this.filaColumna,true);

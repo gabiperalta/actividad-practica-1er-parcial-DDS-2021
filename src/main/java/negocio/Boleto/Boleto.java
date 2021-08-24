@@ -3,7 +3,6 @@ package negocio.Boleto;
 import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
 import negocio.Facturacion.Facturacion;
-import negocio.Promocion.Promocion;
 import persistencia.Conexion;
 import persistencia.boleto.BoletoDAO;
 
@@ -45,7 +44,10 @@ public class Boleto {
     public int getPrecioFinal() {
         return precioFinal;
     }
-    public void generarFactura(Facturacion facturador){};
+    public void generarFactura(Facturacion faturador)
+    {
+        faturador.generarFacturaBoleto(this);
+    }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;

@@ -1,6 +1,8 @@
 package negocio.Cliente;
 
 import negocio.Boleto.Boleto;
+import negocio.Boleto.Entrada;
+import negocio.Boleto.Reserva;
 import negocio.Cine.Funcion;
 import negocio.Tienda.Producto;
 import persistencia.Conexion;
@@ -47,7 +49,7 @@ public class Cliente {
         Boleto nuevaEntrada;
         if(funcion.validarUbicacion(filaColumna))
         {
-            nuevaEntrada =  funcion.solicitarEntrada(filaColumna,this);
+            nuevaEntrada =  funcion.solicitarBoleto(filaColumna,this,new Entrada());
            this.addEntrada(nuevaEntrada);
         }
     }
@@ -56,7 +58,7 @@ public class Cliente {
     {
             if(funcion.getAsientosLibres() >0)
             {
-                Boleto nuevaEntrada = funcion.entradaAleatoria(this);
+                Boleto nuevaEntrada = funcion.boletoAleatorio(this,new Entrada());
                 this.addEntrada(nuevaEntrada);
             }
             else
@@ -68,7 +70,7 @@ public class Cliente {
     {
         Boleto nuevaReserva;
         if(funcion.validarUbicacion(filaColumna))
-        { nuevaReserva =  funcion.solicitarReserva(filaColumna,this);
+        { nuevaReserva =  funcion.solicitarBoleto(filaColumna,this,new Reserva());
             this.addReserva(nuevaReserva);
         }
         //Si no hay ubicacion para esa columna fila debe seleccionar otra el sistema no le dara opciones

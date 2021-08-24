@@ -2,6 +2,7 @@ package negocio.Cine;
 
 import negocio.Boleto.Boleto;
 import negocio.Boleto.Entrada;
+import negocio.Boleto.EstadoBoleto;
 import negocio.Boleto.Reserva;
 import negocio.Cliente.Cliente;
 import negocio.Promocion.FinDeSemana;
@@ -102,21 +103,6 @@ public class Funcion {
         }
         return false;
     }
-    public HashMap<String,Boolean> test(String ubicacionEsperada)
-    {
-        for (String key : ubicaciones.keySet())
-        {
-            if(key.equals(ubicacionEsperada))
-            {
-                Boolean ocupacion = ubicaciones.get(key);
-                if(ocupacion)
-                {
-
-                }
-            }
-        }
-        return ubicaciones;
-    }
     public Promocion obtenerPromocion()
     {
         Dia diaFuncion = this.dia;
@@ -152,20 +138,16 @@ public class Funcion {
             }
         }
     }
-    public Boleto solicitarEntrada(String filaColumna, Cliente cliente) {
-        Boleto entradaNueva = new Boleto(cliente,this,filaColumna,new Entrada());
-        this.disponibilidadBoleto(filaColumna,false);
-        return entradaNueva;
+
+    public Boleto solicitarBoleto(String filaColumna, Cliente cliente, EstadoBoleto estado) {
+
+           Boleto boleto = new Boleto(cliente,this,filaColumna,estado);
+           this.disponibilidadBoleto(filaColumna,false);
+           return boleto;
     }
 
-    public Boleto solicitarReserva(String filaColumna, Cliente cliente) {
-        Boleto reservaNueva = new Boleto(cliente,this,filaColumna,new Reserva());
-        this.disponibilidadBoleto(filaColumna,false);
-        return reservaNueva;
-    }
-
-    public Boleto entradaAleatoria(Cliente cliente) {
-        Boleto entrada = new Boleto(cliente,this,"vacio",new Entrada());
+    public Boleto boletoAleatorio(Cliente cliente,EstadoBoleto estado) {
+        Boleto entrada = new Boleto(cliente,this,"vacio",estado);
 
         for (String key : ubicaciones.keySet()) {
             if(ubicaciones.get(key)) {
