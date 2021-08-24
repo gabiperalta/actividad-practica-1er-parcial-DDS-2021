@@ -13,6 +13,4 @@ public interface PeliculasServices {
     Call<ListadoDePeliculas> proximamente(@Query("api_key") String apiKey, @Query("page") String pagina, @Query("region") String region);
     @GET("movie/{movie_id}/credits")
     Call<JsonObject> actoresPorPelicula(@Path("movie_id") String idPelicula, @Query("api_key") String apiKey);
-    @GET("genre/movie/list")
-    Call<JsonObject> generosDePelicula(@Query("api_key") String apiKey);
 }

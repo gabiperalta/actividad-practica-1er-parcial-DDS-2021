@@ -1,15 +1,9 @@
 package negocio.pelicula;
 
-import javax.swing.text.DateFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 public class PeliculaAdapter {
     private List<Integer> genre_ids;
@@ -17,12 +11,11 @@ public class PeliculaAdapter {
     private String release_date;
     private String title;
     private List<String> actores;
-    private List<String> generos;
     private Pelicula pelicula = null;
 
     public Pelicula getPelicula(){
         if(pelicula == null)
-            pelicula = new Pelicula(title, "Comedia", "juan perez", this.getEstrenoAsDate());
+            pelicula = new Pelicula(title, this.getActoresAsString(), this.getEstrenoAsDate());
         return pelicula;
     }
 
@@ -38,10 +31,6 @@ public class PeliculaAdapter {
         this.actores = actores;
     }
 
-    public void setGeneros(List<String> generos){
-        this.generos = generos;
-    }
-
     private Date getEstrenoAsDate() {
         Date estreno;
         try{
@@ -50,5 +39,9 @@ public class PeliculaAdapter {
             estreno = new Date();
         }
         return estreno;
+    }
+
+    private String getActoresAsString(){
+        return String.join(", ", actores);
     }
 }

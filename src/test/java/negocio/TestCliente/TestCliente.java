@@ -22,10 +22,9 @@ public class TestCliente {
     public void TestPedirEntrada(){
         Cliente cliente = new Cliente("Natalia","Ramirez");
         Date fechaTransmision = new Date(2021,12,12,16,30,00);
-        String generos = "Drama";
         String actores = "ActorA";
         Date estreno = new Date();
-        Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);
+        Pelicula pelicula = new Pelicula("HP",actores,estreno);
         HashMap<String,Boolean> ubicaciones = new HashMap<String,Boolean>()
         {{
             put("M9", true);

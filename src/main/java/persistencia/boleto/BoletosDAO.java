@@ -4,7 +4,6 @@ import negocio.Boleto.Boleto;
 import persistencia.cliente.ClientesDAO;
 import persistencia.funcion.FuncionesDAO;
 import persistencia.pelicula.PeliculasDAO;
-import persistencia.promocion.PromocionesDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,7 +22,7 @@ public class BoletosDAO {
     public List<Boleto> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM boleto";
+            String consulta = "SELECT * FROM boleto;";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();

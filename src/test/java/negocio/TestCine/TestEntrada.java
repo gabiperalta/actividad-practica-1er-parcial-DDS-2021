@@ -24,10 +24,9 @@ public class TestEntrada {
     public void TestPrecioEntrada(){
         Cliente cliente = new Cliente("Natalia","Ramirez");
         Date fechaTransmision = new Date(2021, Calendar.AUGUST,12,16,30, 0);
-        String generos = "Drama";
         String actores = "ActorA";
         Date estreno = new Date();
-        Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);
+        Pelicula pelicula = new Pelicula("HP",actores,estreno);
         Funcion funcion = new Funcion(23,100,100,200,Dia.Miercoles,fechaTransmision,pelicula);
         funcion.setPromocion();
         Boleto entrada = new Boleto(cliente,funcion,"M9",new Entrada());

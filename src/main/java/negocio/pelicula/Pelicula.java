@@ -11,28 +11,22 @@ import java.util.List;
 public class Pelicula {
     private int id;
     private String nombre;
-    private String generos;
     private String actores;
     private Date estreno;
 
     public Pelicula(){}
 
-    public Pelicula(String nombre, String generos, String actores, Date estreno){
+    public Pelicula(String nombre, String actores, Date estreno){
         this.nombre = nombre;
-        this.generos = generos;
         this.actores = actores;
         this.estreno = estreno;
 
         PeliculaDAO peliculaDAO = new PeliculaDAO(Conexion.getInstance().getConnection());
-        this.id = peliculaDAO.insert(nombre,generos,actores,estreno);
+        this.id = peliculaDAO.insert(nombre,actores,estreno);
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setGeneros(String generos) {
-        this.generos = generos;
     }
 
     public void setActores(String actores) {

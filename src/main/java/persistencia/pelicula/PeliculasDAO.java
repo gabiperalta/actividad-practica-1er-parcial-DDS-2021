@@ -19,7 +19,7 @@ public class PeliculasDAO {
     public List<Pelicula> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM pelicula";
+            String consulta = "SELECT * FROM pelicula;";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
@@ -32,10 +32,8 @@ public class PeliculasDAO {
                 Pelicula obj = new Pelicula();
 
                 obj.setNombre(rs.getString("nombre"));
-                obj.setGeneros(rs.getString("generos"));
                 obj.setActores(rs.getString("actores"));
-                //obj.setEstreno(rs.getString("estreno")); // TODO revisar como tomamos la fecha de mysql
-                obj.setEstreno(null);
+                obj.setEstreno(rs.getDate("estreno"));
 
                 peliculas.add(obj);
             }
@@ -49,7 +47,7 @@ public class PeliculasDAO {
     public Pelicula select(int idPelicula){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM pelicula where id = " + idPelicula;
+            String consulta = "SELECT * FROM pelicula where id = " + idPelicula + ";";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
@@ -59,10 +57,8 @@ public class PeliculasDAO {
             while (rs.next()) {
 
                 obj.setNombre(rs.getString("nombre"));
-                obj.setGeneros(rs.getString("generos"));
                 obj.setActores(rs.getString("actores"));
-                //obj.setEstreno(rs.getString("estreno")); // TODO revisar como tomamos la fecha de mysql
-                obj.setEstreno(null);
+                obj.setEstreno(rs.getDate("estreno"));
 
             }
             return obj;

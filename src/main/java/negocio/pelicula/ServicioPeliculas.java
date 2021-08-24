@@ -34,28 +34,6 @@ public class ServicioPeliculas {
         return instancia;
     }
 
-    /*
-    public List<Pelicula> listadoDePeliculasEnCartelera(int pagina) throws IOException {
-        HogaresServices hogaresServices = this.retrofit.create(HogaresServices.class);
-        Call<ListadoDeHogares> requestHogares = hogaresServices.hogares("Bearer " + token,String.valueOf(pagina));
-        Response<ListadoDeHogares> responseHogares = requestHogares.execute();
-        return responseHogares.body();
-    }
-    */
-
-    public ListadoDePeliculas getPeliculasEnCartelera(int pagina) throws IOException {
-        PeliculasServices peliculasServices = this.retrofit.create(PeliculasServices.class);
-        //Call<ListadoDeHogares> requestHogares = hogaresServices.hogares("Bearer " + token,String.valueOf(pagina));
-        //Response<ListadoDeHogares> responseHogares = requestHogares.execute();
-        //List<Hogar> listadoHogares = new ArrayList<>();
-        //if(responseHogares.body() != null)
-        //    listadoHogares = responseHogares.body().getHogares().stream().map(HogarAdapter::getHogar).collect(Collectors.toList());
-        //return listadoHogares;
-        Call<ListadoDePeliculas> requestPeliculas = peliculasServices.enCartelera(apiKey,String.valueOf(pagina),"AR");
-        Response<ListadoDePeliculas> responsePeliculas = requestPeliculas.execute();
-        return responsePeliculas.body();
-    }
-
     public List<Pelicula> getPeliculasEnCartelera() throws IOException {
         List<Pelicula> peliculas = new ArrayList<>();
 
@@ -68,13 +46,6 @@ public class ServicioPeliculas {
 
         // Obtener lista de actores
         peliculasAdapter.forEach(peliculaAdapter -> peliculaAdapter.setActores(this.getActoresPorPelicula(peliculaAdapter.getId())));
-
-        // Obtener generos
-        List<String> generos = new ArrayList<>();
-        peliculasAdapter.forEach(peliculaAdapter -> {
-            peliculaAdapter.getGenre_ids().forEach(genre_id -> generos.add(this.getGeneroDePelicula(genre_id)));
-            peliculaAdapter.setGeneros(generos);
-        });
 
         peliculas = responsePeliculas.body().getResults().stream().map(PeliculaAdapter::getPelicula).collect(Collectors.toList());
         return peliculas;
@@ -98,26 +69,5 @@ public class ServicioPeliculas {
             return actores;
         }
         return actores;
-    }
-
-    public String getGeneroDePelicula(int idGenero){
-        PeliculasServices peliculasServices = this.retrofit.create(PeliculasServices.class);
-        Call<JsonObject> requestGeneros = peliculasServices.generosDePelicula(apiKey);
-        Response<JsonObject> responseGeneros = null;
-        ArrayList<JsonObject> generos = new ArrayList<>();
-        try {
-            responseGeneros = requestGeneros.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        JsonArray jsonArrayGeneros;
-        try{
-            jsonArrayGeneros = responseGeneros.body().getAsJsonArray("genres");
-        } catch (NullPointerException e){
-            jsonArrayGeneros = new JsonArray();
-        }
-        jsonArrayGeneros.forEach(jsonElement -> generos.add(jsonElement.getAsJsonObject()));
-
-        return generos.stream().filter(jsonObjectGenero -> jsonObjectGenero.get("id").getAsInt() == idGenero).collect(Collectors.toList()).get(0).get("name").getAsString();
     }
 }

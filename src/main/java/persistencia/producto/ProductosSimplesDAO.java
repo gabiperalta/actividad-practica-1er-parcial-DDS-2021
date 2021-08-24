@@ -2,9 +2,6 @@ package persistencia.producto;
 
 import negocio.Tienda.Producto;
 import negocio.Tienda.ProductoSimple;
-import persistencia.cliente.ClientesDAO;
-import persistencia.pelicula.PeliculasDAO;
-import persistencia.promocion.PromocionesDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +21,7 @@ public class ProductosSimplesDAO {
     public List<Producto> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM productoSimple ps inner join producto p on p.id = ps.id_producto where id_combo is null";
+            String consulta = "SELECT * FROM productoSimple where id_combo is null;";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
@@ -52,7 +49,7 @@ public class ProductosSimplesDAO {
     public List<Producto> selectPorCombo(int idCombo){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM productoSimple ps inner join producto p on p.id = ps.id_producto where id_combo = " + idCombo;
+            String consulta = "SELECT * FROM productoSimple  where id_combo = " + idCombo + ";";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();

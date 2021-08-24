@@ -17,7 +17,7 @@ public class ClientesDAO {
     public Cliente select(int idCliente){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM cliente where id = " + idCliente;
+            String consulta = "SELECT * FROM cliente where id = " + idCliente + ";";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();

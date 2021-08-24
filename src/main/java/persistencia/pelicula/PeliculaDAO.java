@@ -11,11 +11,11 @@ public class PeliculaDAO {
         this.conn = connection;
     }
 
-    public int insert(String nombre, String generos, String actores, Date estreno) {
+    public int insert(String nombre, String actores, Date estreno) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String estrenoMySql = sdf.format(estreno);
 
-        String consulta = "INSERT INTO pelicula (nombre, generos, actores, estreno) VALUES ('" + nombre + "','" + generos + "','" + actores + "','" + estrenoMySql + "');";
+        String consulta = "INSERT INTO pelicula (nombre, actores, estreno) VALUES ('" + nombre + "','" + actores + "','" + estrenoMySql + "');";
 
         try {
             // Ejecucion

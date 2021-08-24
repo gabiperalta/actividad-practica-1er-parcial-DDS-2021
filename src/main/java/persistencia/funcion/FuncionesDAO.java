@@ -21,7 +21,7 @@ public class FuncionesDAO {
     public List<Funcion> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM funcion";
+            String consulta = "SELECT * FROM funcion;";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
@@ -40,7 +40,7 @@ public class FuncionesDAO {
                 obj.setAsientosTotales(rs.getInt("asientos_totales"));
                 obj.setDia(Dia.values()[rs.getInt("dia")]);
                 obj.setFechaFuncion(rs.getDate("fecha_funcion"));
-                obj.setPrecioGeneral(rs.getInt("precio_general")); // TODO revisar si guardamos el precio como int o como decimal
+                obj.setPrecioGeneral(rs.getInt("precio_general"));
                 obj.setPelicula(peliculasDAO.select(rs.getInt("id_pelicula")));
                 funciones.add(obj);
             }
@@ -54,7 +54,7 @@ public class FuncionesDAO {
     public Funcion select(int idFuncion){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM funcion where id =" + idFuncion;
+            String consulta = "SELECT * FROM funcion where id =" + idFuncion + ";";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
@@ -70,7 +70,7 @@ public class FuncionesDAO {
                 obj.setAsientosTotales(rs.getInt("asientos_totales"));
                 obj.setDia(Dia.values()[rs.getInt("dia")]);
                 obj.setFechaFuncion(rs.getDate("fecha_funcion"));
-                obj.setPrecioGeneral(rs.getInt("precio_general")); // TODO revisar si guardamos el precio como int o como decimal
+                obj.setPrecioGeneral(rs.getInt("precio_general"));
                 obj.setPelicula(peliculasDAO.select(rs.getInt("id_pelicula")));
             }
             return obj;
