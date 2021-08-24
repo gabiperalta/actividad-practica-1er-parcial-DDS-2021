@@ -1,5 +1,6 @@
 package negocio.Cliente;
 
+import negocio.Boleto.Boleto;
 import negocio.Boleto.Entrada;
 import negocio.Cine.Funcion;
 import negocio.Boleto.Reserva;
@@ -11,8 +12,8 @@ import java.util.List;
 public class Cliente {
     private String nombre;
     private String apellido;
-    private List<Entrada> entradas;
-    private List<Reserva> reservas;
+    private List<Boleto> entradas;
+    private List<Boleto> reservas;
     private List<Producto> combos;
 
     //test
@@ -26,18 +27,18 @@ public class Cliente {
         this.combos = new ArrayList<>();
     }
 
-    public List<Entrada> getEntradas(){return this.entradas;};
-    public List<Reserva> getReservas(){return this.reservas;};
-    public void setEntradas(List<Entrada> entradas){this.entradas = entradas;};
-    public void setReservas(List<Reserva> reservas){this.reservas = reservas;};
-    public void removeReserva(Reserva reserva){this.reservas.remove(reserva);};
-    public void addReserva(Reserva reserva){this.reservas.add(reserva);};
-    public void removeEntrada(Entrada entrada){this.entradas.remove(entrada);};
-    public void addEntrada(Entrada entrada){this.entradas.add(entrada);};
+    public List<Boleto> getEntradas(){return this.entradas;};
+    public List<Boleto> getReservas(){return this.reservas;};
+    public void setEntradas(List<Boleto> entradas){this.entradas = entradas;};
+    public void setReservas(List<Boleto> reservas){this.reservas = reservas;};
+    public void removeReserva(Boleto reserva){this.reservas.remove(reserva);};
+    public void addReserva(Boleto reserva){this.reservas.add(reserva);};
+    public void removeEntrada(Boleto entrada){this.entradas.remove(entrada);};
+    public void addEntrada(Boleto entrada){this.entradas.add(entrada);};
 
     public void pedirEntradaporfila(Funcion funcion,String filaColumna)
     {
-        Entrada nuevaEntrada;
+        Boleto nuevaEntrada;
         if(funcion.validarUbicacion(filaColumna))
         {
             nuevaEntrada =  funcion.solicitarEntrada(filaColumna,this);
@@ -48,7 +49,7 @@ public class Cliente {
     {
             if(funcion.getAsientosLibres() >0)
             {
-                Entrada nuevaEntrada = funcion.entradaAleatoria(this);
+                Boleto nuevaEntrada = funcion.entradaAleatoria(this);
                 this.addEntrada(nuevaEntrada);
             }
             else
@@ -58,7 +59,7 @@ public class Cliente {
     }
     public void pedirReserva(Funcion funcion,String filaColumna)
     {
-        Reserva nuevaReserva;
+        Boleto nuevaReserva;
         if(funcion.validarUbicacion(filaColumna))
         { nuevaReserva =  funcion.solicitarReserva(filaColumna,this);
             this.addReserva(nuevaReserva);

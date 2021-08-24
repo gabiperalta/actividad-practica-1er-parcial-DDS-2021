@@ -1,6 +1,8 @@
 package negocio.Promocion;
 
+import negocio.Boleto.Boleto;
 import negocio.Boleto.Entrada;
+import negocio.Cine.Funcion;
 
 public class Miercoles extends Promocion {
     private static int porcentajedescuento = 25;
@@ -9,12 +11,11 @@ public class Miercoles extends Promocion {
         return this.porcentajedescuento;
     }
     @Override
-    public void precioEntradas(Entrada entrada) {
-        int precioEntrada = entrada.getPrecioGeneral();
+    public int precioEntradas(Funcion funcion)
+    {
+        int precioEntrada = funcion.getPrecioGeneral();
         //25 % de descuento
         int precio = precioEntrada - ((precioEntrada * porcentajedescuento)/100);
-        //en caso de querer hacer un 2X1
-        //precioEntrada = precioEntrada - (precioEntrada/2);
-        entrada.setPrecioFinal(precio);
+        return precio;
     }
 }

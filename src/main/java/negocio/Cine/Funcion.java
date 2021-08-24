@@ -1,5 +1,6 @@
 package negocio.Cine;
 
+import negocio.Boleto.Boleto;
 import negocio.Boleto.Entrada;
 import negocio.Boleto.Reserva;
 import negocio.Cliente.Cliente;
@@ -17,9 +18,11 @@ public class Funcion {
     private int asientosTotales;
     private int asientosLibres;
     private int precioGeneral;
+    private int precioFinal;
     private Dia dia;
     private Date fechaFuncion;
     private Pelicula pelicula;
+    private Promocion promocion;
     private HashMap<String,Boolean> ubicaciones;
 
     public Funcion(int numeroSala,int asientosTotales,int asientosLibres,int precioGeneral,Dia dia,Date fechaFuncion, Pelicula pelicula)
@@ -31,6 +34,15 @@ public class Funcion {
         this.dia = dia;
         this.fechaFuncion = fechaFuncion;
         this.pelicula= pelicula;
+    }
+
+    public void setPromocion(){
+        Promocion promo  = this.obtenerPromocion();
+        this.promocion = promo;
+        this.precioFinal = promo.precioEntradas(this);
+    };
+    public Promocion getPromocion(){
+        return this.promocion;
     }
 
     public int getAsientosLibres(){return this.asientosLibres;}
@@ -46,6 +58,10 @@ public class Funcion {
 
     public int getPrecioGeneral() {
         return precioGeneral;
+    }
+
+    public int getPrecioFinal() {
+        return precioFinal;
     }
 
     public void setPrecioGeneral(int precioGeneral) {
@@ -93,20 +109,18 @@ public class Funcion {
     public Promocion obtenerPromocion()
     {
         Dia diaFuncion = this.dia;
-        Promocion nuevapromo;
         if(diaFuncion == Dia.Miercoles)
         {
-            nuevapromo = new Miercoles();
+            return new Miercoles();
         }
         if(diaFuncion == Dia.Sabado || diaFuncion == Dia.Domingo)
         {
-            nuevapromo = new FinDeSemana();
+            return  new FinDeSemana();
         }
         else
         {
-            nuevapromo = new SinPromocion();
+            return new SinPromocion();
         }
-        return nuevapromo;
 
     }
     public void disponibilidadBoleto(String filaColumna,Boolean disponibilidad)
@@ -127,22 +141,21 @@ public class Funcion {
             }
         }
     }
-   public Entrada solicitarEntrada(String filaColumna, Cliente cliente) {
-           Promocion promo = this.obtenerPromocion();
-           Entrada entradaNueva = new Entrada(cliente,this.numeroSala,this.precioGeneral,promo,this,filaColumna);
+   public Boleto solicitarEntrada(String filaColumna, Cliente cliente) {
+
+           Boleto entradaNueva = new Boleto(cliente,this,filaColumna,new Entrada());
            this.disponibilidadBoleto(filaColumna,false);
            return entradaNueva;
     }
-    public Reserva solicitarReserva(String filaColumna, Cliente cliente) {
-        Promocion promo = this.obtenerPromocion();
-        Reserva reservaNueva = new Reserva(cliente,this.numeroSala,this.precioGeneral,promo,this,filaColumna);
+    public Boleto solicitarReserva(String filaColumna, Cliente cliente) {
+
+        Boleto reservaNueva = new Boleto(cliente,this,filaColumna,new Reserva());
         this.disponibilidadBoleto(filaColumna,false);
         return reservaNueva;
     }
-    public Entrada entradaAleatoria(Cliente cliente)
+    public Boleto entradaAleatoria(Cliente cliente)
     {
-        Promocion promo = this.obtenerPromocion();
-        Entrada entrada = new Entrada(cliente,this.numeroSala,this.precioGeneral,promo,this,"vacio");
+        Boleto entrada = new Boleto(cliente,this,"vacio",new Entrada());
 
         for (String key : ubicaciones.keySet())
         {

@@ -4,9 +4,8 @@ import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
 import negocio.Promocion.Promocion;
 
-public class Reserva {
+public class Reserva extends EstadoBoleto{
     private String codigoReserva;
-    private Estado estado;
     private Cliente cliente;
     private int numeroSala;
     private int precioGeneral;
@@ -14,25 +13,14 @@ public class Reserva {
     private Funcion funcion;
     private Promocion promocion;
     private String filaColumna;
-    public Reserva(Cliente cliente,int numeroSala,int precioGeneral,Promocion promocion,Funcion funcion,String filaColumna)
+    public void cancelarReserva(Cliente cliente)
     {
-        this.cliente = cliente;
-        this.numeroSala = numeroSala;
-        this.precioGeneral = precioGeneral;
-        this.promocion = promocion;
-        this.funcion = funcion;
-        this.filaColumna = filaColumna;
-    }
-    public void cancelarReserva()
-    {
-        this.estado = Estado.Cancelado;
         this.funcion.disponibilidadBoleto(this.filaColumna,true);
     }
-    public void  pagarReserva()
+    public void  pagarReserva(Boleto boleto)
     {
-        this.estado = Estado.Pago;
-        Entrada nuevaEntrada = new Entrada(this.cliente,this.numeroSala,this.precioGeneral,this.promocion,this.funcion,this.filaColumna);
-        cliente.removeReserva(this);
+        Boleto nuevaEntrada = new Boleto(this.cliente,this.funcion,this.filaColumna,this);
+        cliente.removeReserva(boleto);
         cliente.addEntrada(nuevaEntrada);
     }
 }

@@ -1,9 +1,12 @@
 package negocio.TestCine;
+import negocio.Boleto.Boleto;
 import negocio.Boleto.Entrada;
+import negocio.Cine.Dia;
 import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
 import negocio.Promocion.Miercoles;
 import negocio.Promocion.Promocion;
+import negocio.Promocion.SinPromocion;
 import negocio.pelicula.Pelicula;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -33,9 +36,11 @@ public class TestEntrada {
         actores.add("ActorA");
         LocalDate estreno = LocalDate.now();
         Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);
-        Funcion funcion = new Funcion(23,100,100,200,Martes,fechaTransmision,pelicula);
-        Entrada entrada = new Entrada(cliente,1,200,promocion,funcion,"M9");
-        promocion.precioEntradas(entrada);
-        Assert.assertEquals(150,entrada.getPrecioFinal());
+        Funcion funcion = new Funcion(23,100,100,200,Dia.Miercoles,fechaTransmision,pelicula);
+        funcion.setPromocion();
+        Boleto entrada = new Boleto(cliente,funcion,"M9",new Entrada());
+        Miercoles sinP = new Miercoles();
+        //Assert.assertEquals(150,entrada.getPrecioFinal());
+       Assert.assertEquals(150,entrada.getPrecioFinal());
     }
 }
