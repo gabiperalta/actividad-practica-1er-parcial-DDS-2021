@@ -1,7 +1,7 @@
 package negocio.Cliente;
 
 import negocio.Boleto.Boleto;
-import negocio.Boleto.Entrada;
+import negocio.Boleto.Pagado;
 import negocio.Boleto.Reserva;
 import negocio.Cine.Funcion;
 import negocio.Tienda.Producto;
@@ -49,7 +49,7 @@ public class Cliente {
         Boleto nuevaEntrada;
         if(funcion.validarUbicacion(filaColumna))
         {
-            nuevaEntrada =  funcion.solicitarBoleto(filaColumna,this,new Entrada());
+            nuevaEntrada =  funcion.solicitarBoleto(filaColumna,this,new Pagado());
            this.addEntrada(nuevaEntrada);
         }
     }
@@ -58,7 +58,7 @@ public class Cliente {
     {
             if(funcion.getAsientosLibres() >0)
             {
-                Boleto nuevaEntrada = funcion.boletoAleatorio(this,new Entrada());
+                Boleto nuevaEntrada = funcion.boletoAleatorio(this,new Pagado());
                 this.addEntrada(nuevaEntrada);
             }
             else

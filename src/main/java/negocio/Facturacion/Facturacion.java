@@ -1,7 +1,6 @@
 package negocio.Facturacion;
 
 import negocio.Boleto.Boleto;
-import negocio.Boleto.Entrada;
 import negocio.Tienda.Producto;
 
 public class Facturacion {

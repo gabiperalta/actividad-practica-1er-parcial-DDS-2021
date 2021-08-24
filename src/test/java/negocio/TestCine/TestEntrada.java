@@ -1,7 +1,7 @@
 package negocio.TestCine;
 
 import negocio.Boleto.Boleto;
-import negocio.Boleto.Entrada;
+import negocio.Boleto.Pagado;
 import negocio.Cine.Dia;
 import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
@@ -29,7 +29,7 @@ public class TestEntrada {
         Pelicula pelicula = new Pelicula("HP",actores,estreno);
         Funcion funcion = new Funcion(23,100,100,200,Dia.Miercoles,fechaTransmision,pelicula);
         funcion.setPromocion();
-        Boleto entrada = new Boleto(cliente,funcion,"M9",new Entrada());
+        Boleto entrada = new Boleto(cliente,funcion,"M9",new Pagado());
         Miercoles sinP = new Miercoles();
         Assert.assertEquals(150,entrada.getPrecioFinal());
     }

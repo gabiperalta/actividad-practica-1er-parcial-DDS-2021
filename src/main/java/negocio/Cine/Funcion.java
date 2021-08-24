@@ -1,9 +1,7 @@
 package negocio.Cine;
 
 import negocio.Boleto.Boleto;
-import negocio.Boleto.Entrada;
 import negocio.Boleto.EstadoBoleto;
-import negocio.Boleto.Reserva;
 import negocio.Cliente.Cliente;
 import negocio.Promocion.FinDeSemana;
 import negocio.Promocion.Miercoles;

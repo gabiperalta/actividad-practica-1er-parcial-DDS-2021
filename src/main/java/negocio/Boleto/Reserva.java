@@ -27,6 +27,6 @@ public class Reserva extends EstadoBoleto{
         Boleto nuevaEntrada = new Boleto(this.cliente,this.funcion,this.filaColumna,this);
         cliente.removeReserva(reserva);
         cliente.addEntrada(nuevaEntrada);
-        reserva.setEstadoBoleto(new Entrada());
+        reserva.setEstadoBoleto(new Pagado());
     }
 }

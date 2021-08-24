@@ -1,7 +1,5 @@
 package negocio.Promocion;
 
-import negocio.Boleto.Boleto;
-import negocio.Boleto.Entrada;
 import negocio.Cine.Funcion;
 
 public class FinDeSemana extends Promocion {

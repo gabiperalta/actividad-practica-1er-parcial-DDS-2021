@@ -26,7 +26,6 @@ public class TestProducto {
         combo.setProductos(productos);
         combo.setPorcentajedescuento(5);
         Assert.assertEquals(143,combo.calcularPrecio());
-
     }
 }
 

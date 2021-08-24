@@ -1,6 +1,6 @@
 package negocio.Boleto;
 
-public class Entrada extends EstadoBoleto {
+public class Pagado extends EstadoBoleto {
    private int descuentProductos;
    public void aplicarDescuento(int descuento)
    {
