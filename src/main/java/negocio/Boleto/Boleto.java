@@ -4,8 +4,11 @@ import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
 import negocio.Facturacion.Facturacion;
 import negocio.Promocion.Promocion;
+import persistencia.Conexion;
+import persistencia.boleto.BoletoDAO;
 
 public class Boleto {
+    private int id;
     private String codigo;
     private Cliente cliente;
     private int precioGeneral;
@@ -23,6 +26,9 @@ public class Boleto {
         this.filaColumna = filaColumna;
         this.estadoBoleto = estadoBoleto;
         this.precioFinal = funcion.getPrecioFinal();
+
+        BoletoDAO boletoDAO = new BoletoDAO(Conexion.getInstance().getConnection());
+        this.id = boletoDAO.insert(cliente,funcion,filaColumna);
     }
     public void setEstadoBoleto(EstadoBoleto estado){this.estadoBoleto = estado;}
     public Cliente getCliente(){return this.cliente;};

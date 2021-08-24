@@ -19,7 +19,7 @@ public class FuncionDAO {
         String fechaFuncionMySql = sdf.format(fechaFuncion);
 
         String consulta = "INSERT INTO funcion (numero_sala, asientos_libres, asientos_totales, dia, fecha_funcion, precio_general,id_pelicula) " +
-                "VALUES (" + numeroSala + "," + asientosLibres + "," + asientosTotales + "," + dia + ",'" + fechaFuncionMySql + "'," + precioGeneral + "," + pelicula.getId() + ");";
+                "VALUES (" + numeroSala + "," + asientosLibres + "," + asientosTotales + "," + dia.ordinal() + ",'" + fechaFuncionMySql + "'," + precioGeneral + "," + pelicula.getId() + ");";
 
         try {
             // Ejecucion

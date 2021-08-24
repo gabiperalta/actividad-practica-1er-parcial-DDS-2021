@@ -11,10 +11,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class TestEntrada {
     @BeforeClass
@@ -25,12 +23,8 @@ public class TestEntrada {
     //Calcular precio combo pochoclero con 5% de descuento
     public void TestPrecioEntrada(){
         Cliente cliente = new Cliente("Natalia","Ramirez");
-        Date fechaTransmision = new Date(2021,12,12,16,30,00);
-        //List<String> generos =new ArrayList<>();
-        //generos.add("Drama");
+        Date fechaTransmision = new Date(2021, Calendar.AUGUST,12,16,30, 0);
         String generos = "Drama";
-        //List<String> actores =new ArrayList<>();
-        //actores.add("ActorA");
         String actores = "ActorA";
         Date estreno = new Date();
         Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);

@@ -191,4 +191,8 @@ public class Funcion {
     public void setFechaFuncion(Date fechaFuncion) {
         this.fechaFuncion = fechaFuncion;
     }
+
+    public int getId() {
+        return id;
+    }
 }
