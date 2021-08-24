@@ -5,7 +5,7 @@ import negocio.Cliente.Cliente;
 import negocio.Promocion.Promocion;
 
 public class Reserva extends EstadoBoleto{
-    private String codigoReserva;
+    private String codigo;
     private Cliente cliente;
     private int numeroSala;
     private int precioGeneral;
@@ -17,10 +17,11 @@ public class Reserva extends EstadoBoleto{
     {
         this.funcion.disponibilidadBoleto(this.filaColumna,true);
     }
-    public void  pagarReserva(Boleto boleto)
+    public void  pagarReserva(Boleto reserva)
     {
         Boleto nuevaEntrada = new Boleto(this.cliente,this.funcion,this.filaColumna,this);
-        cliente.removeReserva(boleto);
+        cliente.removeReserva(reserva);
         cliente.addEntrada(nuevaEntrada);
+        reserva.setEstadoBoleto(new Entrada());
     }
 }

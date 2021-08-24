@@ -10,6 +10,8 @@ public class Cine {
     private static Cine instance = null;
     private List<Funcion> funciones;
     private List<Cliente> clientes;
+    private List<String> reclamos;
+    private List<String> contrasenias;
     private Tienda tienda;
 
     private Cine(){
@@ -19,6 +21,12 @@ public class Cine {
             instance = new Cine();
         }
         return instance;
+    }
+    public List<String> getReclamos(){
+        return this.reclamos;
+    }
+    public List<String> getContrasenias(){
+        return this.contrasenias;
     }
 
 }

@@ -6,6 +6,7 @@ import negocio.Facturacion.Facturacion;
 import negocio.Promocion.Promocion;
 
 public class Boleto {
+    private String codigo;
     private Cliente cliente;
     private int precioGeneral;
     private int precioFinal;
@@ -23,7 +24,7 @@ public class Boleto {
         this.estadoBoleto = estadoBoleto;
         this.precioFinal = funcion.getPrecioFinal();
     }
-
+    public void setEstadoBoleto(EstadoBoleto estado){this.estadoBoleto = estado;}
     public Cliente getCliente(){return this.cliente;};
     public int getNumeroSala(){return funcion.getNumeroSala();};
     public void setFilaColumna(String filaColumna){this.filaColumna = filaColumna;}
