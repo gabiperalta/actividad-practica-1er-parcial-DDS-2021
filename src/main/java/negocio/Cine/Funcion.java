@@ -9,11 +9,14 @@ import negocio.Promocion.Miercoles;
 import negocio.Promocion.Promocion;
 import negocio.Promocion.SinPromocion;
 import negocio.pelicula.Pelicula;
+import persistencia.Conexion;
+import persistencia.funcion.FuncionDAO;
 
 import java.util.Date;
 import java.util.HashMap;
 
 public class Funcion {
+    private int id;
     private int numeroSala;
     private int asientosTotales;
     private int asientosLibres;
@@ -38,6 +41,9 @@ public class Funcion {
         this.dia = dia;
         this.fechaFuncion = fechaFuncion;
         this.pelicula= pelicula;
+
+        FuncionDAO funcionDAO = new FuncionDAO(Conexion.getInstance().getConnection());
+        this.id = funcionDAO.insert(numeroSala,asientosLibres,asientosTotales,precioGeneral,dia,fechaFuncion,pelicula);
     }
 
     public void setPromocion(){
@@ -182,4 +188,7 @@ public class Funcion {
         this.dia = dia;
     }
 
+    public void setFechaFuncion(Date fechaFuncion) {
+        this.fechaFuncion = fechaFuncion;
+    }
 }

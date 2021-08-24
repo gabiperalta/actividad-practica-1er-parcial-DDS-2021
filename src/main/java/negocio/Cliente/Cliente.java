@@ -3,11 +3,14 @@ package negocio.Cliente;
 import negocio.Boleto.Boleto;
 import negocio.Cine.Funcion;
 import negocio.Tienda.Producto;
+import persistencia.Conexion;
+import persistencia.cliente.ClienteDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+    private int id;
     private String nombre;
     private String apellido;
     private List<Boleto> entradas;
@@ -18,8 +21,6 @@ public class Cliente {
 
     }
 
-    //test
-
     public Cliente(String nombre,String apellido)
     {
         this.nombre = nombre;
@@ -27,6 +28,9 @@ public class Cliente {
         this.entradas = new ArrayList<>();
         this.reservas = new ArrayList<>();
         this.combos = new ArrayList<>();
+
+        ClienteDAO clienteDAO = new ClienteDAO(Conexion.getInstance().getConnection());
+        this.id = clienteDAO.insert(this.nombre,this.apellido);
     }
 
     public List<Boleto> getEntradas(){return this.entradas;};

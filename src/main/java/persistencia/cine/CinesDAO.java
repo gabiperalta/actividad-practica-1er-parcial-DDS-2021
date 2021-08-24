@@ -1,7 +1,6 @@
 package persistencia.cine;
 
 import negocio.Cine.Cine;
-import persistencia.ejemplo.Persona;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

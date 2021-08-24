@@ -12,8 +12,10 @@ public class Boleto {
     private Funcion funcion;
     private String filaColumna;
     private EstadoBoleto estadoBoleto;
-    public Boleto(Cliente cliente,Funcion funcion,String filaColumna,EstadoBoleto estadoBoleto)
-    {
+
+    public Boleto(){}
+
+    public Boleto(Cliente cliente,Funcion funcion,String filaColumna,EstadoBoleto estadoBoleto) {
         this.cliente = cliente;
         this.precioGeneral = funcion.getPrecioGeneral();
         this.funcion = funcion;
@@ -38,4 +40,11 @@ public class Boleto {
     }
     public void generarFactura(Facturacion facturador){};
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setFuncion(Funcion funcion) {
+        this.funcion = funcion;
+    }
 }

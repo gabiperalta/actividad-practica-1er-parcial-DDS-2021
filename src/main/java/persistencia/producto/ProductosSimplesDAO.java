@@ -1,6 +1,5 @@
 package persistencia.producto;
 
-import negocio.Cine.Entrada;
 import negocio.Tienda.Producto;
 import negocio.Tienda.ProductoSimple;
 import persistencia.cliente.ClientesDAO;

@@ -31,7 +31,7 @@ public class TestCliente {
         //List<String> actores =new ArrayList<>();
         //actores.add("ActorA");
         String actores = "ActorA";
-        LocalDate estreno = LocalDate.now();
+        Date estreno = new Date();
         Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);
         HashMap<String,Boolean> ubicaciones = new HashMap<String,Boolean>()
         {{

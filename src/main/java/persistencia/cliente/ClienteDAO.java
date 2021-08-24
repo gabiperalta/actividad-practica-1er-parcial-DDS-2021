@@ -1,21 +1,16 @@
-package persistencia.pelicula;
+package persistencia.cliente;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class PeliculaDAO {
+public class ClienteDAO {
     private final Connection conn;
 
-    public PeliculaDAO(Connection connection){
+    public ClienteDAO(Connection connection){
         this.conn = connection;
     }
 
-    public int insert(String nombre, String generos, String actores, Date estreno) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String estrenoMySql = sdf.format(estreno);
-
-        String consulta = "INSERT INTO pelicula (nombre, generos, actores, estreno) VALUES ('" + nombre + "','" + generos + "','" + actores + "','" + estrenoMySql + "');";
+    public int insert(String nombre, String apellido) {
+        String consulta = "INSERT INTO cliente (nombre, apellido) VALUES ('" + nombre + "','" + apellido + "');";
 
         try {
             // Ejecucion
@@ -31,9 +26,11 @@ public class PeliculaDAO {
             else
                 return 0;
         } catch (SQLException ex) {
+
             // handle any errors
             System.out.println("Error en Insert");
             return 0;
         }
+
     }
 }

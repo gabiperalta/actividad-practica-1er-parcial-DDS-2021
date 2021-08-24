@@ -6,8 +6,6 @@ import negocio.Cine.Dia;
 import negocio.Cine.Funcion;
 import negocio.Cliente.Cliente;
 import negocio.Promocion.Miercoles;
-import negocio.Promocion.Promocion;
-import negocio.Promocion.SinPromocion;
 import negocio.pelicula.Pelicula;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -27,7 +25,6 @@ public class TestEntrada {
     //Calcular precio combo pochoclero con 5% de descuento
     public void TestPrecioEntrada(){
         Cliente cliente = new Cliente("Natalia","Ramirez");
-        Promocion promocion = new Miercoles();
         Date fechaTransmision = new Date(2021,12,12,16,30,00);
         //List<String> generos =new ArrayList<>();
         //generos.add("Drama");
@@ -35,7 +32,7 @@ public class TestEntrada {
         //List<String> actores =new ArrayList<>();
         //actores.add("ActorA");
         String actores = "ActorA";
-        LocalDate estreno = LocalDate.now();
+        Date estreno = new Date();
         Pelicula pelicula = new Pelicula("HP",generos,actores,estreno);
         Funcion funcion = new Funcion(23,100,100,200,Dia.Miercoles,fechaTransmision,pelicula);
         funcion.setPromocion();

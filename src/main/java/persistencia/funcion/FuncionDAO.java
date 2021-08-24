@@ -1,21 +1,25 @@
-package persistencia.pelicula;
+package persistencia.funcion;
+
+import negocio.Cine.Dia;
+import negocio.pelicula.Pelicula;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PeliculaDAO {
+public class FuncionDAO {
     private final Connection conn;
 
-    public PeliculaDAO(Connection connection){
+    public FuncionDAO(Connection connection){
         this.conn = connection;
     }
 
-    public int insert(String nombre, String generos, String actores, Date estreno) {
+    public int insert(int numeroSala, int asientosLibres, int asientosTotales, int precioGeneral, Dia dia, Date fechaFuncion, Pelicula pelicula) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String estrenoMySql = sdf.format(estreno);
+        String fechaFuncionMySql = sdf.format(fechaFuncion);
 
-        String consulta = "INSERT INTO pelicula (nombre, generos, actores, estreno) VALUES ('" + nombre + "','" + generos + "','" + actores + "','" + estrenoMySql + "');";
+        String consulta = "INSERT INTO funcion (numero_sala, asientos_libres, asientos_totales, dia, fecha_funcion, precio_general,id_pelicula) " +
+                "VALUES (" + numeroSala + "," + asientosLibres + "," + asientosTotales + "," + dia + ",'" + fechaFuncionMySql + "'," + precioGeneral + "," + pelicula.getId() + ");";
 
         try {
             // Ejecucion

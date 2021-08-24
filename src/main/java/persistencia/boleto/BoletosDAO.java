@@ -1,7 +1,8 @@
-package persistencia.entrada;
+package persistencia.boleto;
 
-import negocio.Cine.Entrada;
+import negocio.Boleto.Boleto;
 import persistencia.cliente.ClientesDAO;
+import persistencia.funcion.FuncionesDAO;
 import persistencia.pelicula.PeliculasDAO;
 import persistencia.promocion.PromocionesDAO;
 
@@ -12,37 +13,34 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntradasDAO {
+public class BoletosDAO {
     private Connection conn;
 
-    public EntradasDAO(Connection connection){
+    public BoletosDAO(Connection connection){
         this.conn = connection;
     }
 
-    public List<Entrada> selectAll(){
+    public List<Boleto> selectAll(){
         try {
             // generacion de query
-            String consulta = "SELECT * FROM entrada";
+            String consulta = "SELECT * FROM boleto";
 
             // Ejecucion
             Statement stmt = this.conn.createStatement();
             ResultSet rs = stmt.executeQuery(consulta);
 
             ClientesDAO clientesDAO = new ClientesDAO(conn);
-            PromocionesDAO promocionesDAO = new PromocionesDAO(conn);
-            PeliculasDAO peliculasDAO = new PeliculasDAO(conn);
+            FuncionesDAO funcionesDAO = new FuncionesDAO(conn);
 
             // Recorrer y usar cada linea retornada
-            List<Entrada> entradas = new ArrayList<>();
+            List<Boleto> entradas = new ArrayList<>();
 
             while (rs.next()) {
-                Entrada obj = new Entrada();
+                Boleto obj = new Boleto();
 
                 obj.setCliente(clientesDAO.select(rs.getInt("id_cliente")));
-                obj.setNumeroSala(rs.getInt("numero_sala"));
-                obj.setPrecioGeneral(rs.getInt("precio_general")); // TODO revisar si guardamos el precio como int o como decimal
-                obj.setPromocion(promocionesDAO.select(rs.getInt("id_promocion")));
-                obj.setPelicula(peliculasDAO.select(rs.getInt("id_pelicula")));
+                obj.setFuncion(funcionesDAO.select(rs.getInt("id_funcion")));
+                obj.setFilaColumna(rs.getString("fila_columna"));
 
                 entradas.add(obj);
             }
