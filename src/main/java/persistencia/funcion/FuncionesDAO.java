@@ -37,9 +37,7 @@ public class FuncionesDAO {
                 obj.setNumeroSala(rs.getInt("numero_sala"));
                 obj.setAsientosLibres(rs.getInt("asientos_libres"));
                 obj.setAsientosTotales(rs.getInt("asientos_totales"));
-                obj.setDia(rs.getString("dia"));
-                obj.setHorarioInicio(null); // TODO revisar como guardamos las fechas en java
-                obj.setHorarioFin(null); // TODO revisar como guardamos las fechas en java
+                //obj.setDia(rs.getString("dia")); // TODO usar la clase Dia
                 obj.setPrecioGeneral(rs.getInt("precio_general")); // TODO revisar si guardamos el precio como int o como decimal
                 obj.setPelicula(peliculasDAO.select(rs.getInt("id_pelicula")));
                 funciones.add(obj);

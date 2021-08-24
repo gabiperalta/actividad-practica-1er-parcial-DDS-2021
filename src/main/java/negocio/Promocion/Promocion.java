@@ -1,9 +1,11 @@
 package negocio.Promocion;
 
-import negocio.Cine.Entrada;
+import negocio.Boleto.Boleto;
+import negocio.Boleto.Entrada;
+import negocio.Cine.Funcion;
 
 public abstract class Promocion {
 
-    abstract public void precioEntradas(Entrada entrada);
+    abstract public int precioEntradas(Funcion funcion);
 
 }

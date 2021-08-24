@@ -24,7 +24,7 @@ public class TestProducto {
         productos.add(gaseosa);
         productos.add(pochoclos);
         combo.setProductos(productos);
-        combo.Porcentajedescuento(5);
+        combo.setPorcentajedescuento(5);
         Assert.assertEquals(143,combo.calcularPrecio());
 
     }
